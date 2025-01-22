@@ -1,3 +1,6 @@
 [submodule "hw02fileio-xinyuJames"]
 	path = hw02fileio-xinyuJames
 	url = https://github.com/Purdue-WL-ECE264-Spring2025/hw02fileio-xinyuJames.git
+[submodule "hw03-count-words-xinyuJames"]
+	path = hw03-count-words-xinyuJames
+	url = https://github.com/Purdue-WL-ECE264-Spring2025/hw03-count-words-xinyuJames.git
