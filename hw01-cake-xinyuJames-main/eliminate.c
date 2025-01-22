@@ -1,6 +1,6 @@
 // ***
 // *** You MUST modify this file
-// ***
+// *** ok
 
 #include <stdio.h>
 #include <stdbool.h>
