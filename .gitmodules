@@ -7,3 +7,6 @@
 [submodule "hw01-cake-xinyuJames"]
 	path = hw01-cake-xinyuJames
 	url = https://github.com/Purdue-WL-ECE264-Spring2025/hw01-cake-xinyuJames.git
+[submodule "hw04-binarysort-xinyuJames"]
+	path = hw04-binarysort-xinyuJames
+	url = https://github.com/Purdue-WL-ECE264-Spring2025/hw04-binarysort-xinyuJames.git
