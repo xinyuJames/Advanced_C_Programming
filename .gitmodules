@@ -10,3 +10,6 @@
 [submodule "hw04-binarysort-xinyuJames"]
 	path = hw04-binarysort-xinyuJames
 	url = https://github.com/Purdue-WL-ECE264-Spring2025/hw04-binarysort-xinyuJames.git
+[submodule "hw05-qsort-xinyuJames"]
+	path = hw05-qsort-xinyuJames
+	url = https://github.com/Purdue-WL-ECE264-Spring2025/hw05-qsort-xinyuJames
