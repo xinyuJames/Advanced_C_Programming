@@ -13,3 +13,6 @@
 [submodule "hw05-qsort-xinyuJames"]
 	path = hw05-qsort-xinyuJames
 	url = https://github.com/Purdue-WL-ECE264-Spring2025/hw05-qsort-xinyuJames
+[submodule "string-library-xinyuJames"]
+	path = string-library-xinyuJames
+	url = https://github.com/Purdue-WL-ECE264-Spring2025/string-library-xinyuJames.git
