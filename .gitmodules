@@ -16,3 +16,6 @@
 [submodule "string-library-xinyuJames"]
 	path = string-library-xinyuJames
 	url = https://github.com/Purdue-WL-ECE264-Spring2025/string-library-xinyuJames.git
+[submodule "hw07-recursion-xinyuJames"]
+	path = hw07-recursion-xinyuJames
+	url = https://github.com/Purdue-WL-ECE264-Spring2025/hw07-recursion-xinyuJames.git
