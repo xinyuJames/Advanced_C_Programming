@@ -19,3 +19,6 @@
 [submodule "hw07-recursion-xinyuJames"]
 	path = hw07-recursion-xinyuJames
 	url = https://github.com/Purdue-WL-ECE264-Spring2025/hw07-recursion-xinyuJames.git
+[submodule "hw08-mutual-recursion-xinyuJames"]
+	path = hw08-mutual-recursion-xinyuJames
+	url = https://github.com/Purdue-WL-ECE264-Spring2025/hw08-mutual-recursion-xinyuJames.git
