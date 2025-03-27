@@ -22,3 +22,6 @@
 [submodule "hw08-mutual-recursion-xinyuJames"]
 	path = hw08-mutual-recursion-xinyuJames
 	url = https://github.com/Purdue-WL-ECE264-Spring2025/hw08-mutual-recursion-xinyuJames.git
+[submodule "strings-to-long-integers-xinyuJames"]
+	path = strings-to-long-integers-xinyuJames
+	url = git@github.com:Purdue-WL-ECE264-Spring2025/strings-to-long-integers-xinyuJames.git
