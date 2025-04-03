@@ -25,3 +25,6 @@
 [submodule "strings-to-long-integers-xinyuJames"]
 	path = strings-to-long-integers-xinyuJames
 	url = git@github.com:Purdue-WL-ECE264-Spring2025/strings-to-long-integers-xinyuJames.git
+[submodule "hw10-queues-xinyuJames"]
+	path = hw10-queues-xinyuJames
+	url = git@github.com:Purdue-WL-ECE264-Spring2025/hw10-queues-xinyuJames.git
