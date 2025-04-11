@@ -28,3 +28,6 @@
 [submodule "hw10-queues-xinyuJames"]
 	path = hw10-queues-xinyuJames
 	url = git@github.com:Purdue-WL-ECE264-Spring2025/hw10-queues-xinyuJames.git
+[submodule "hw11-binary-tree-xinyuJames"]
+	path = hw11-binary-tree-xinyuJames
+	url = https://github.com/Purdue-WL-ECE264-Spring2025/hw11-binary-tree-xinyuJames.git
