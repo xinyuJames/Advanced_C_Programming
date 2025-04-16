@@ -31,3 +31,6 @@
 [submodule "hw11-binary-tree-xinyuJames"]
 	path = hw11-binary-tree-xinyuJames
 	url = https://github.com/Purdue-WL-ECE264-Spring2025/hw11-binary-tree-xinyuJames.git
+[submodule "hw12-inverting-trees-xinyuJames"]
+	path = hw12-inverting-trees-xinyuJames
+	url = https://github.com/Purdue-WL-ECE264-Spring2025/hw12-inverting-trees-xinyuJames.git
