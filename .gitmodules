@@ -34,3 +34,6 @@
 [submodule "hw12-inverting-trees-xinyuJames"]
 	path = hw12-inverting-trees-xinyuJames
 	url = https://github.com/Purdue-WL-ECE264-Spring2025/hw12-inverting-trees-xinyuJames.git
+[submodule "hw13-calculator-xinyuJames"]
+	path = hw13-calculator-xinyuJames
+	url = https://github.com/Purdue-WL-ECE264-Spring2025/hw13-calculator-xinyuJames.git
