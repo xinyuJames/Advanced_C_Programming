@@ -1,0 +1,236 @@
+        -:    0:Source:hw09.c
+        -:    0:Graph:hw09.gcno
+        -:    0:Data:hw09.gcda
+        -:    0:Runs:1
+        -:    1:#include "hw09.h"
+        -:    2:#include <assert.h>
+        -:    3:#include <ctype.h>
+        -:    4:#include <errno.h>
+        -:    5:#include <limits.h>
+        -:    6:#include <stddef.h>
+        -:    7:
+        -:    8:#define INV_SYMBOL 36
+        -:    9:
+        -:   10:// useful static helper functions
+        -:   11:static int char_to_int(char c);
+        -:   12:const char *skip_whitespace(const char *ptr);
+        -:   13:
+     1045:   14:long string_to_long(const char *string, const char **endptr, int base) {
+        -:   15:  // checking that the first argument is not null, as specified in hw09.h
+    1045*:   16:  assert(string != NULL);
+        -:   17:  // if (*endptr != NULL)
+        -:   18:  // {
+        -:   19:  //   *endptr = NULL;
+        -:   20:  // }
+        -:   21:
+        -:   22:  // setting errno to zero before function body starts
+     1045:   23:  errno = 0;
+        -:   24:  //char issign = 0;
+        -:   25:  //int backtrack = 0;
+     1045:   26:  char sign = '+';
+     1045:   27:  char isZero = 0;
+     1045:   28:  long ret_value = 0;
+        -:   29:
+        -:   30:  // Check if the base provided is invalid, i.e. it is less than 2 or more than
+        -:   31:  // 36. Remember that base 0 is valid, and you need to check the string to see
+        -:   32:  // if it is octal or hexadecimal.
+        -:   33:  //
+        -:   34:  // If the base is invalid, set errno to EINVAL and return
+        -:   35:
+     1045:   36:  if (base == 0) 
+        -:   37:  {
+       19:   38:    isZero = 1;
+     1026:   39:  } else if (base < 2 || base > 36) 
+        -:   40:  {
+      361:   41:    errno = EINVAL;
+        -:   42:    // if (endptr != NULL)
+        -:   43:    // {
+        -:   44:    //   *endptr = string;
+        -:   45:    // }
+      361:   46:    return ret_value;
+        -:   47:  }
+        -:   48:  //TRY: at the beginning of string
+      684:   49:  if (endptr != NULL)
+        -:   50:  {
+      684:   51:    *endptr = string;
+        -:   52:  }
+        -:   53:  // Skip over any whitespace present
+        -:   54:
+      684:   55:  string = skip_whitespace(string);
+        -:   56:
+        -:   57:  // Find the sign before the start of the number, if any
+        -:   58:  
+      684:   59:  if (string[0] == '-') 
+        -:   60:  {
+        -:   61:    //issign = 1;
+      216:   62:    if (char_to_int(string[1]) == INV_SYMBOL)
+        -:   63:    {
+        -:   64:      // if (endptr != NULL)
+        -:   65:      // {
+        -:   66:      //   *endptr = string;
+        -:   67:      // }
+       36:   68:      return ret_value;
+        -:   69:    }
+      180:   70:    string++;
+      180:   71:    sign = '-';
+      468:   72:  } else if (string[0] == '+') 
+        -:   73:  {
+        -:   74:    //issign = 1;
+      216:   75:    if (char_to_int(string[1]) == INV_SYMBOL)
+        -:   76:    {
+        -:   77:      // if (endptr != NULL)
+        -:   78:      // {
+        -:   79:      //   *endptr = string;
+        -:   80:      // }
+      144:   81:      return ret_value;
+        -:   82:    }
+       72:   83:    string++;
+        -:   84:  }
+        -:   85:
+        -:   86:  //fulfill base == 16, and start with 0x or 0X
+      504:   87:  if (base == 16)
+        -:   88:  {
+       14:   89:    if (string[0] == '0' && (string[1] == 'x' || string[1] == 'X')) 
+        -:   90:    {
+        8:   91:      string ++;
+        8:   92:      if (char_to_int(string[1]) == INV_SYMBOL || char_to_int(string[1]) >= base)
+        -:   93:      {
+        5:   94:        if (endptr != NULL)
+        -:   95:        {
+        5:   96:          *endptr = string;
+        -:   97:        }
+        5:   98:        return ret_value;
+        -:   99:      }
+        3:  100:      string++;
+        -:  101:    }
+        -:  102:  }
+        -:  103:
+        -:  104:  //fulfill base == 8, and start with 0
+        -:  105:  //actually chilling
+        -:  106:
+        -:  107:  //fulfill base == 0
+      499:  108:  if (isZero)
+        -:  109:  {
+       14:  110:    if (string[0] == '0') 
+        -:  111:    {
+        9:  112:      string++;
+        9:  113:      if (string[0] == 'x' || string[0] == 'X') 
+        -:  114:      {
+        8:  115:        base = 16;
+        8:  116:        if (char_to_int(string[1]) == INV_SYMBOL || char_to_int(string[1]) >= base)
+        -:  117:        {
+        5:  118:          if (endptr != NULL)
+        -:  119:          {
+        5:  120:            *endptr = string;
+        -:  121:          }
+        5:  122:          return ret_value;
+        -:  123:        }
+        3:  124:        string ++;
+        -:  125:      } else 
+        -:  126:      {
+        1:  127:        base = 8;
+        -:  128:      }
+        -:  129:    } else
+        -:  130:    {
+        5:  131:      base = 10;
+        -:  132:    }
+        -:  133:    
+        -:  134:  }
+        -:  135:
+        -:  136:  //deal with 
+        -:  137:
+        -:  138:  // Continue conversion while
+        -:  139:  // 1) the string has not ended
+        -:  140:  // 2) the current symbol is valid
+        -:  141:  // 3) the current symbol is not a numeric value more than the base
+     1575:  142:  while (*string != '\0' && char_to_int(*string) != INV_SYMBOL && char_to_int(*string) < base)
+        -:  143:  {
+     1087:  144:    int digit = char_to_int(*string);
+        -:  145:    //check if out of range
+        -:  146:
+        -:  147:
+     1087:  148:    if (sign == '+' && ret_value > (LONG_MAX - digit) / base) 
+        -:  149:    {
+        5:  150:      errno = ERANGE;
+        5:  151:      if (endptr != NULL)
+        -:  152:      {
+       97:  153:        while (*string != '\0' && char_to_int(*string) != INV_SYMBOL && char_to_int(*string) < base)
+        -:  154:        {
+       92:  155:          string++;
+        -:  156:        }
+        5:  157:        *endptr = string;
+        -:  158:      }
+        5:  159:      return LONG_MAX;
+        -:  160:    }
+        -:  161:
+     1082:  162:    if (sign == '-' && -ret_value < (LONG_MIN + digit) / base)
+        -:  163:    {
+        1:  164:      errno = ERANGE;
+        1:  165:      if (endptr != NULL)
+        -:  166:      {
+       63:  167:        while (*string != '\0' && -ret_value < (LONG_MIN + digit) / base)
+        -:  168:        {
+       62:  169:          string++;
+        -:  170:        }
+        1:  171:        *endptr = string;
+        -:  172:      }
+        1:  173:      return LONG_MIN;
+        -:  174:    }
+        -:  175:    //update the return value
+     1081:  176:    ret_value = ret_value * base + digit;
+     1081:  177:    string++;
+     1081:  178:    if (endptr != NULL)
+        -:  179:    {
+     1081:  180:      *endptr = string;
+        -:  181:    }
+        -:  182:  }
+        -:  183:  
+        -:  184:  //directly after sign
+        -:  185:  // if (issign == 1)
+        -:  186:  // {
+        -:  187:  //   string--;
+        -:  188:  //   if ((string[0] == '-' || string[0] == '+') && char_to_int(string[1]) >= base)
+        -:  189:  //   {
+        -:  190:  //     if (endptr != NULL)
+        -:  191:  //     {
+        -:  192:  //       *endptr = string;
+        -:  193:  //     }
+        -:  194:  //     return ret_value;
+        -:  195:  //   } else
+        -:  196:  //   {
+        -:  197:  //     string++;
+        -:  198:  //   }
+        -:  199:    
+        -:  200:  // }
+        -:  201:
+        -:  202:
+      488:  203:  return sign == '-' ? -ret_value : ret_value;
+        -:  204:}
+        -:  205:
+     4698:  206:static int char_to_int(char c) {
+        -:  207:  // what if c is '0' -- '9'
+     4698:  208:  if (isdigit(c)) {
+     2854:  209:    return c - '0';
+        -:  210:  }
+        -:  211:
+        -:  212:  // what if c is 'a' -- 'z'
+     1844:  213:  if (islower(c)) {
+        -:  214:    // only deal with one alphabetic case
+     1239:  215:    c = toupper(c);
+        -:  216:  }
+        -:  217:
+     1844:  218:  if (isupper(c)) {
+        -:  219:    // 'A' becomes 65 - 65 + 10 = 10, 'B' becomes 11 and so on
+     1631:  220:    return c - 'A' + 10;
+        -:  221:  }
+        -:  222:
+      213:  223:  return INV_SYMBOL;
+        -:  224:}
+        -:  225:
+      684:  226:const char *skip_whitespace(const char *ptr) {
+      720:  227:  while (isspace(*ptr)) {
+       36:  228:    ptr++;
+        -:  229:  }
+        -:  230:
+      684:  231:  return ptr;
+        -:  232:}
