@@ -37,3 +37,6 @@
 [submodule "hw13-calculator-xinyuJames"]
 	path = hw13-calculator-xinyuJames
 	url = https://github.com/Purdue-WL-ECE264-Spring2025/hw13-calculator-xinyuJames.git
+[submodule "hw-14-layouts-xinyuJames"]
+	path = hw-14-layouts-xinyuJames
+	url = https://github.com/Purdue-WL-ECE264-Spring2025/hw-14-layouts-xinyuJames.git
